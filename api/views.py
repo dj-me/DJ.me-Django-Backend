@@ -16,6 +16,7 @@ from django.utils.decorators import method_decorator
 import json
 import requests
 import sys
+import base64
 # import spotipy
 # import spotipy.util as util
 
@@ -35,7 +36,7 @@ def home(request):
 	code = request.GET.get('code')
 	print code 
 	payload = {'grant_type' : 'authorization_code' , 'code':code  ,'redirect_uri' : redirect_uri  }
-	headers = {"Authorization": 'Basic' +  'ZjliOTUzOGFjZGI5NGViOGFlNWZlMzAyMTZiNjBiNDQ6MDljZmU0ZmQyMWRkNDRjOWI3ZmQ3Y2RkNjcyZmQ3NTENCg=='}
+	headers = {"Authorization": 'Basic' +  base64.b64encode(bytes(client_id +':' + client_secret, 'utf-8'))}
 
 	r = requests.post(OAUTH_TOKEN_URL , params = payload, headers = headers)
 	print r
