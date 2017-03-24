@@ -37,7 +37,7 @@ def home(request):
 	payload = {'grant_type' : 'authorization_code' , 'code':code  ,'redirect_uri' : redirect_uri , 'client_id':client_id , 'client_secret':client_secret  }
 	headers = {"content-type":"application/json"}
 
-	r = requests.post(OAUTH_TOKEN_URL , params = payload , headers = headers)
+	r = requests.post(OAUTH_TOKEN_URL , params = payload )
 
 
 
