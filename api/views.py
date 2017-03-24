@@ -36,9 +36,9 @@ def home(request):
 	print code 
 	payload = {'grant_type' : 'authorization_code' , 'code':code  ,'redirect_uri' : 'https://djme.herokuapp.com/home' , 'client_id':client_id , 'client_secret':client_secret  }
 
-	requests.post('https://accounts.spotify.com/api/token' , params = payload )
+	r = requests.post('https://accounts.spotify.com/api/token' , params = payload )
 
 
 
 
-	return HttpResponse('done')
+	return HttpResponse(r.text)
