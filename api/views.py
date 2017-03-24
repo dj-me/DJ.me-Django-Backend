@@ -36,7 +36,7 @@ def home(request):
 	code = request.GET.get('code')
 	print code 
 	payload = {'grant_type' : 'authorization_code' , 'code':code  ,'redirect_uri' : redirect_uri  }
-	headers = {"Authorization": 'Basic' +  base64.b64encode(bytes( 'f9b9538acdb94eb8ae5fe30216b60b44:09cfe4fd21dd44c9b7fd7cdd672fd751', 'utf-8'))}
+	headers = {"Authorization": 'Basic' +  base64.b64encode(bytes( 'f9b9538acdb94eb8ae5fe30216b60b44:09cfe4fd21dd44c9b7fd7cdd672fd751'))}
 
 	r = requests.post(OAUTH_TOKEN_URL , params = payload, headers = headers)
 	print r
