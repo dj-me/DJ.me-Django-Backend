@@ -16,8 +16,8 @@ from django.utils.decorators import method_decorator
 import json
 import requests
 import sys
-import spotipy
-import spotipy.util as util
+# import spotipy
+# import spotipy.util as util
 
 # Create your views here.
 
