@@ -35,7 +35,7 @@ def home(request):
 	code = request.GET.get('code')
 	print code 
 	payload = {'grant_type' : 'authorization_code' , 'code':code  ,'redirect_uri' : redirect_uri  }
-	headers = {"Authorization": 'Basic' +  'ZjliOTUzOGFjZGI5NGViOGFlNWZlMzAyMTZiNjBiNDQ=' + ':' + 'MDljZmU0ZmQyMWRkNDRjOWI3ZmQ3Y2RkNjcyZmQ3NTENCg=='}
+	headers = {"Authorization": 'Basic' +  'ZjliOTUzOGFjZGI5NGViOGFlNWZlMzAyMTZiNjBiNDQ6MDljZmU0ZmQyMWRkNDRjOWI3ZmQ3Y2RkNjcyZmQ3NTENCg=='}
 
 	r = requests.post(OAUTH_TOKEN_URL , params = payload, headers = headers)
 
