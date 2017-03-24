@@ -41,4 +41,4 @@ def home(request):
 
 
 
-	return HttpResponse(username)
+	return HttpResponse('done')
