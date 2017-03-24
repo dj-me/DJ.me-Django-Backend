@@ -38,6 +38,7 @@ def home(request):
 	headers = {"Authorization": 'Basic' +  'ZjliOTUzOGFjZGI5NGViOGFlNWZlMzAyMTZiNjBiNDQ6MDljZmU0ZmQyMWRkNDRjOWI3ZmQ3Y2RkNjcyZmQ3NTENCg=='}
 
 	r = requests.post(OAUTH_TOKEN_URL , params = payload, headers = headers)
+	print r
 
 
 
