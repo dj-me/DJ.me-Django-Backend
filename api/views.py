@@ -137,7 +137,7 @@ def songs_saver(request):
 		f = djsessions.objects.get(hostedsession = x['hostedsession'])
 		k = user.objects.get(hostname = x['hostname'])
 		for i in x['songs']:
-			print i 
+			# print i 
 			
 
 			u = f.hostsong_set.get_or_create(song = i)[0]
@@ -147,35 +147,22 @@ def songs_saver(request):
 		aa = djsessions.objects.all().filter(hostedsession=x['hostedsession'])
 		songSorted = hostsong.objects.all().filter(hostedsession=aa).order_by('counter')
 		print "entering"
-		print songSorted
-		headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + k.access_token}
-		requests.get('https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.playlists.delete?id=' + k.playid)
-		data  = {
-	# 'part' : 'contentDetails' , 
-    'snippet': {
-      'title': 'Vishrut 123', 
-      'description': 'Sample playlist for Data API',
-     }
-  }
-
-	
-		q = requests.post('https://www.googleapis.com/youtube/v3/playlists?part=snippet' , headers = headers , data=json.dumps(data))
-		a  = json.loads(q.text)
-	
-		p_id = a['id']
-		k.playid = p_id
-		k.save()
-
+		# print songSorted
+		del_songs = requests.get('https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=' + k.playid)
+		delete = json.loads(del_songs.text)
+		for i in delete['items']['id']:
+			print i 
+			requests.delete('https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.playlistItems.delete?id=' + k.playid)
 		for l in songSorted:
 			z = l.song.replace(" ", "+")
-			print z 
-			
+			# print z 
+			headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + k.access_token}
 			s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q= '+ z +'&type=video&videoDefinition=high' , headers = headers )
 
 			songs  = json.loads(s.text)
 			v_id  = songs['items'][0]['id']['videoId']
-			print v_id
-			print "hihihih"
+			# print v_id
+			# print "hihihih"
 
 
 			data2 =   {
