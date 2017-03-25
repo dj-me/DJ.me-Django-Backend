@@ -65,18 +65,18 @@ def home(request):
 	v_id  = songs['items'][0]['id']['videoId']
 
 
-	# data2 =   {
- #    'snippet': {
- #      'playlistId': p_id, 
- #      'resourceId': {
- #          'kind': 'youtube#video',
- #          'videoId': '{VIDEO_ID}'
- #        }
- #     'position': 0
- #      }
- #   }
+	data2 =   {
+    'snippet': {
+      'playlistId': p_id, 
+      'resourceId': {
+          'kind': 'youtube#video',
+          'videoId': v_id
+        }
+     'position': 0
+      }
+   }
 
-	# w = requests.post('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' , headers = headers , data=json.dumps(data2))
+	w = requests.post('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' , headers = headers , data=json.dumps(data2))
 
 
 
