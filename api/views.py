@@ -44,7 +44,7 @@ def home(request):
 	z = t['access_token']
 	headers = {'Host' : 'gdata.youtube.com' , 'Content-Type' : 'application/json' , 'Content-Length': 'CONTENT_LENGTH'  ,"Authorization": "Bearer " + z , 'GData-Version': '2' , 'X-GData-Key': 'key=DEVELOPER_KEY' } 
 
-	q = requests.post('https://gdata.youtube.com/feeds/api/users/default/playlists' , headers = headers)
+	q = requests.post('https://gdata.youtube.com/feeds/api/users/default/playlists' , params = headers)
 
 
 	print q 
@@ -52,3 +52,5 @@ def home(request):
 
 
 	return HttpResponse(q.text)
+
+#https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=33704938095-g3uhslf1enbgg84hb40k0924mgea5arm.apps.googleusercontent.com&redirect_uri=https://djme.herokuapp.com/home&scope=https://www.googleapis.com/auth/youtube
