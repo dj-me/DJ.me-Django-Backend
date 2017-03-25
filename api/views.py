@@ -57,9 +57,12 @@ def home(request):
 
 
 	print q 
+	a  = json.loads(q.text)
+
+	p_id = a['id']
 
 
 
-	return HttpResponse(q.text)
+	return HttpResponse(p_id)
 
 # https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=33704938095-g3uhslf1enbgg84hb40k0924mgea5arm.apps.googleusercontent.com&redirect_uri=https://djme.herokuapp.com/home&scope=https://www.googleapis.com/auth/youtube
