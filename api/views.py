@@ -42,9 +42,17 @@ def home(request):
 	print r
 	t = json.loads(r.text)
 	z = t['access_token']
-	headers = {'Host' : 'gdata.youtube.com' , 'Content-Type' : 'application/json' , 'Content-Length': 'CONTENT_LENGTH'  ,"Authorization": "Bearer " + z , 'GData-Version': '2' , 'X-GData-Key': 'key=DEVELOPER_KEY' } 
 
-	q = requests.post('https://www.googleapis.com/youtube/v3/playlists' , headers = headers)
+	# headers = {'Host' : 'gdata.youtube.com' , 'Content-Type' : 'application/json' , 'Content-Length': 'CONTENT_LENGTH'  ,"Authorization": "Bearer " + z , 'GData-Version': '2' , 'X-GData-Key': 'key=DEVELOPER_KEY' } 
+	data  = {
+    'snippet': {
+      'title': 'New playlist', 
+      'description': 'Sample playlist for Data API',
+     }
+  }
+  
+	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+	q = requests.post('https://www.googleapis.com/youtube/v3/playlists?part=snippet' , headers = headers , data=json.dumps(data))
 
 
 	print q 
