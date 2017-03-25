@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('song', models.CharField(default=b'NULL', max_length=250)),
-                ('counter', models.CharField(default=b'NULL', max_length=250)),
+                ('counter', models.CharField(default=b'0', max_length=250)),
                 ('hostedsession', models.ForeignKey(to='api.djsessions')),
             ],
             options={
@@ -50,6 +50,9 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('hostname', models.CharField(default=b'NULL', max_length=250)),
                 ('hotspot', models.CharField(default=b'NULL', max_length=250)),
+                ('access_token', models.CharField(default=b'NULL', max_length=250)),
+                ('playid', models.CharField(default=b'NULL', max_length=250)),
+                ('playurl', models.CharField(default=b'NULplayL', max_length=250)),
             ],
             options={
             },
