@@ -135,6 +135,7 @@ def songs_saver(request):
 
 		print json.loads(request.body)
 		f = djsessions.objects.get(hostedsession = x['hostedsession'])
+		k = user.objects.get(hostname = x['hostname'])
 		for i in x['songs']:
 			print i 
 			
@@ -147,7 +148,7 @@ def songs_saver(request):
 		songSorted = hostsong.objects.all().filter(hostedsession=aa).order_by('counter')
 		for i in songSorted:
 			z = i.song.replace(" ", "+")
-			headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + z}
+			headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + k.access_token}
 			s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q= '+ z +'&type=video&videoDefinition=high' , headers = headers )
 			songs  = json.loads(s.text)
 			v_id  = songs['items'][0]['id']['videoId']
@@ -155,7 +156,7 @@ def songs_saver(request):
 
 			data2 =   {
 		    'snippet': {
-		      'playlistId': p_id, 
+		      'playlistId': k.playid, 
 		      'resourceId': {
 		          'kind': 'youtube#video',
 		          'videoId': v_id
@@ -183,6 +184,6 @@ def songs_saver(request):
 def song(request):
 	# aa = djsessions.objects.all().filter(hostedsession=foo)
 	# songSorted = hostsong.objects.all().filter(hostedsession=aa).order_by('counter').reverse
-	data2  = {'hostedsession' : 'vishrut1' , 'songs'  : [ 'shape of you' , 'down' , 'one time']}
-	w = requests.post('http://127.0.0.1:8000/song_saver' ,  data=json.dumps(data2))
+	data2  = {'hostname': 'Vishrut Kohli' , 'hostedsession' : 'vishrut1' , 'songs'  : [ 'shape of you' , 'down' , 'one time']}
+	w = requests.post('https://djme.herokuapp.com/songs' ,  data=json.dumps(data2))
 	return HttpResponse("done")
