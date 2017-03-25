@@ -52,7 +52,7 @@ def home(request):
 	t = json.loads(r.text)
 	global z 
 	z = t['access_token']
-	details  = user.objects.get_or_create(access_token  = z)
+	det  = user.objects.get_or_create(access_token  = z)
 	
 	# headers = {'Host' : 'gdata.youtube.com' , 'Content-Type' : 'application/json' , 'Content-Length': 'CONTENT_LENGTH'  ,"Authorization": "Bearer " + z , 'GData-Version': '2' , 'X-GData-Key': 'key=DEVELOPER_KEY' } 
 	data  = {
@@ -71,10 +71,11 @@ def home(request):
 	a  = json.loads(q.text)
 	
 	p_id = a['id']
-	details.pid = p_id
-	details.url = 'https://www.youtube.com/playlist?list=' + p_id
-	details.save()
-	details.hostname = a['snippet']['channelTitle']
+	det.playid = p_id
+	det.playurl = 'https://www.youtube.com/playlist?list=' + p_id
+	det.hostname = a['snippet']['channelTitle']
+	det.save()
+
 	s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=shape+of+you&type=video&videoDefinition=high' , headers = headers )
 	songs  = json.loads(s.text)
 	v_id  = songs['items'][0]['id']['videoId']
@@ -93,7 +94,7 @@ def home(request):
 
 	w = requests.post('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' , headers = headers , data=json.dumps(data2))
 
-	name = {'name' : details.hostname}
+	name = {'name' : det.hostname}
 	responseobj = json.dumps(name, indent = 4)
 
 

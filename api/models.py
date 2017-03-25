@@ -6,8 +6,8 @@ class user(models.Model):
     hostname = models.CharField(max_length = 250 , default = 'NULL')
     hotspot = models.CharField(max_length = 250 , default = 'NULL')
     access_token = models.CharField(max_length = 250 , default = 'NULL')
-    pid = models.CharField(max_length = 250 , default = 'NULL')
-    url = models.CharField(max_length = 250 , default = 'NULL')
+    playid = models.CharField(max_length = 250 , default = 'NULL')
+    playurl = models.CharField(max_length = 250 , default = 'NULplayL')
 
     def __str__(self):
         return self.hostname
