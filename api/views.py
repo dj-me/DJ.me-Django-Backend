@@ -45,7 +45,7 @@ def home(request):
 
 	# headers = {'Host' : 'gdata.youtube.com' , 'Content-Type' : 'application/json' , 'Content-Length': 'CONTENT_LENGTH'  ,"Authorization": "Bearer " + z , 'GData-Version': '2' , 'X-GData-Key': 'key=DEVELOPER_KEY' } 
 	data  = {
-	'part' : 'contentDetails' , 
+	# 'part' : 'contentDetails' , 
     'snippet': {
       'title': 'New playlist', 
       'description': 'Sample playlist for Data API',
@@ -53,7 +53,7 @@ def home(request):
   }
 
 	headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + z}
-	q = requests.post('https://www.googleapis.com/youtube/v3/playlists' , headers = headers , data=json.dumps(data))
+	q = requests.post('https://www.googleapis.com/youtube/v3/playlists?part=snippet' +  , headers = headers , data=json.dumps(data))
 
 
 	print q 
@@ -62,4 +62,4 @@ def home(request):
 
 	return HttpResponse(q.text)
 
-# https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=33704938095-g3uhslf1enbgg84hb40k0924mgea5arm.apps.googleusercontent.com&redirect_uri=https://djme.herokuapp.com/home&scope=https://www.googleapis.com/auth/youtube
+https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=33704938095-g3uhslf1enbgg84hb40k0924mgea5arm.apps.googleusercontent.com&redirect_uri=https://djme.herokuapp.com/home&scope=https://www.googleapis.com/auth/youtube
