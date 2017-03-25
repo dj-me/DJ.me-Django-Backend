@@ -47,7 +47,7 @@ def home(request):
 	data  = {
 	# 'part' : 'contentDetails' , 
     'snippet': {
-      'title': 'New playlist', 
+      'title': 'Vishrut 123', 
       'description': 'Sample playlist for Data API',
      }
   }
