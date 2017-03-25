@@ -45,6 +45,7 @@ def home(request):
 
 	# headers = {'Host' : 'gdata.youtube.com' , 'Content-Type' : 'application/json' , 'Content-Length': 'CONTENT_LENGTH'  ,"Authorization": "Bearer " + z , 'GData-Version': '2' , 'X-GData-Key': 'key=DEVELOPER_KEY' } 
 	data  = {
+	'part' : 'contentDetails' , 
     'snippet': {
       'title': 'New playlist', 
       'description': 'Sample playlist for Data API',
