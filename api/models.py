@@ -5,6 +5,9 @@ from django.db import models
 class user(models.Model):
     hostname = models.CharField(max_length = 250 , default = 'NULL')
     hotspot = models.CharField(max_length = 250 , default = 'NULL')
+    # access_token = models.CharField(max_length = 250 , default = 'NULL')
+    # p_id = models.CharField(max_length = 250 , default = 'NULL')
+    # url = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
         return self.hostname
@@ -29,7 +32,7 @@ class finalplaylist(models.Model):
 class hostsong(models.Model):
     hostedsession = models.ForeignKey(djsessions, on_delete=models.CASCADE)
     song = models.CharField(max_length = 250 , default = 'NULL')
-    counter = models.CharField(max_length = 250 , default = 'NULL')
+    counter = models.CharField(max_length = 250 , default = '0')
 
     def __str__(self):
         return self.song
