@@ -148,10 +148,28 @@ def songs_saver(request):
 		songSorted = hostsong.objects.all().filter(hostedsession=aa).order_by('counter')
 		print "entering"
 		print songSorted
+		headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + k.access_token}
+		requests.get('https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.playlists.delete?id=' + k.playid)
+		data  = {
+	# 'part' : 'contentDetails' , 
+    'snippet': {
+      'title': 'Vishrut 123', 
+      'description': 'Sample playlist for Data API',
+     }
+  }
+
+	
+		q = requests.post('https://www.googleapis.com/youtube/v3/playlists?part=snippet' , headers = headers , data=json.dumps(data))
+		a  = json.loads(q.text)
+	
+		p_id = a['id']
+		k.playid = p_id
+		k.save()
+
 		for l in songSorted:
 			z = l.song.replace(" ", "+")
 			print z 
-			headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + k.access_token}
+			
 			s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q= '+ z +'&type=video&videoDefinition=high' , headers = headers )
 
 			songs  = json.loads(s.text)
