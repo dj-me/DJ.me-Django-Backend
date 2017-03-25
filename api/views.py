@@ -152,7 +152,7 @@ def songs_saver(request):
 			z = l.song.replace(" ", "+")
 			print z 
 			headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + k.access_token}
-			s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q= '+ k.access_token +'&type=video&videoDefinition=high' , headers = headers )
+			s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q= '+ z +'&type=video&videoDefinition=high' , headers = headers )
 
 			songs  = json.loads(s.text)
 			v_id  = songs['items'][0]['id']['videoId']
