@@ -72,7 +72,7 @@ def home(request):
           'kind': 'youtube#video',
           'videoId': v_id
         }
-     'position': 0
+     'position': '0'
       }
    }
 
