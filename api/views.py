@@ -71,7 +71,7 @@ def home(request):
       'resourceId': {
           'kind': 'youtube#video',
           'videoId': v_id
-        }
+        },
      'position': '0'
       }
    }
