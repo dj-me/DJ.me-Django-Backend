@@ -153,7 +153,7 @@ def songs_saver(request):
 		delete = json.loads(del_songs.text)
 		print "hihihihihihi"
 		print del_songs.text
-		for i in delete['items']['id']:
+		for i in delete['items'][0]['id']:
 			print i 
 			requests.delete('https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.playlistItems.delete?id=' + k.playid)
 		for l in songSorted:
