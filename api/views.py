@@ -189,4 +189,4 @@ def song(request):
 	# songSorted = hostsong.objects.all().filter(hostedsession=aa).order_by('counter').reverse
 	data2  = {'hostname': 'Vishrut Kohli' , 'hostedsession' : 'vishrut1' , 'songs'  : [ 'shape of you' , 'down' , 'one time']}
 	w = requests.post('https://djme.herokuapp.com/songs' ,  data=json.dumps(data2))
-	return HttpResponse("done")
+	return HttpResponse("w.text")
