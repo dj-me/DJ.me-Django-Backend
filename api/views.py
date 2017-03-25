@@ -147,8 +147,9 @@ def songs_saver(request):
 		aa = djsessions.objects.all().filter(hostedsession=x['hostedsession'])
 		songSorted = hostsong.objects.all().filter(hostedsession=aa).order_by('counter')
 		print "entering"
+		headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + k.access_token}
 		# print songSorted
-		del_songs = requests.get('https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=' + k.playid)
+		del_songs = requests.get('https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=' + k.playid , headers = headers )
 		delete = json.loads(del_songs.text)
 		print "hihihihihihi"
 		print del_songs.text
@@ -158,7 +159,7 @@ def songs_saver(request):
 		for l in songSorted:
 			z = l.song.replace(" ", "+")
 			# print z 
-			headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + k.access_token}
+			
 			s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q= '+ z +'&type=video&videoDefinition=high' , headers = headers )
 
 			songs  = json.loads(s.text)
