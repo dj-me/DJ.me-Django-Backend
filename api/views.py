@@ -69,9 +69,9 @@ def home(request):
 
 	print q 
 	a  = json.loads(q.text)
-	global p_id
+	
 	p_id = a['id']
-	details.p_id = p_id
+	details.pid = p_id
 	details.url = 'https://www.youtube.com/playlist?list=' + p_id
 	details.save()
 	details.hostname = a['snippet']['channelTitle']

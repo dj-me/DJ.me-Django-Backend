@@ -6,7 +6,7 @@ class user(models.Model):
     hostname = models.CharField(max_length = 250 , default = 'NULL')
     hotspot = models.CharField(max_length = 250 , default = 'NULL')
     access_token = models.CharField(max_length = 250 , default = 'NULL')
-    p_id = models.CharField(max_length = 250 , default = 'NULL')
+    pid = models.CharField(max_length = 250 , default = 'NULL')
     url = models.CharField(max_length = 250 , default = 'NULL')
 
     def __str__(self):
