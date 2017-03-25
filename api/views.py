@@ -146,10 +146,11 @@ def songs_saver(request):
 			u.save()
 		aa = djsessions.objects.all().filter(hostedsession=x['hostedsession'])
 		songSorted = hostsong.objects.all().filter(hostedsession=aa).order_by('counter')
+		print "entering"
 		for i in songSorted:
 			z = i.song.replace(" ", "+")
 			headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + k.access_token}
-			s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q= '+ z +'&type=video&videoDefinition=high' , headers = headers )
+			s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q= '+ k.access_token +'&type=video&videoDefinition=high' , headers = headers )
 			songs  = json.loads(s.text)
 			v_id  = songs['items'][0]['id']['videoId']
 			print v_id
