@@ -58,7 +58,7 @@ def home(request):
 	data  = {
 	# 'part' : 'contentDetails' , 
     'snippet': {
-      'title': 'Vishrut 123', 
+      'title': 'DJ.me', 
       'description': 'Sample playlist for Data API',
      }
   }
