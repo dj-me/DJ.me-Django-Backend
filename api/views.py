@@ -60,7 +60,8 @@ def home(request):
 	a  = json.loads(q.text)
 
 	p_id = a['id']
-	a = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=shape+of+you&type=video&videoDefinition=high' , headers = headers )
+	songs = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=shape+of+you&type=video&videoDefinition=high' , headers = headers )
+	v_id  = songs['items'][0]['id']['videoId']
 
 
 	# data2 =   {
@@ -78,6 +79,6 @@ def home(request):
 
 
 
-	return HttpResponse(a.text)
+	return HttpResponse(v_id)
 
 # https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=33704938095-g3uhslf1enbgg84hb40k0924mgea5arm.apps.googleusercontent.com&redirect_uri=https://djme.herokuapp.com/home&scope=https://www.googleapis.com/auth/youtube
