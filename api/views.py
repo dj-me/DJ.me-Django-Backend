@@ -30,8 +30,7 @@ from api.models import user , hostsong , djsessions , finalplaylist
 # import spotipy.util as util
 
 # Create your views here.
-z  = ''
-p_id = ''
+
 def home(request):
 	# OAUTH_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize'
 	
@@ -53,7 +52,8 @@ def home(request):
 	t = json.loads(r.text)
 	global z 
 	z = t['access_token']
-
+	details  = users.objects.get_or_create(access_token  = z)
+	
 	# headers = {'Host' : 'gdata.youtube.com' , 'Content-Type' : 'application/json' , 'Content-Length': 'CONTENT_LENGTH'  ,"Authorization": "Bearer " + z , 'GData-Version': '2' , 'X-GData-Key': 'key=DEVELOPER_KEY' } 
 	data  = {
 	# 'part' : 'contentDetails' , 
@@ -71,6 +71,10 @@ def home(request):
 	a  = json.loads(q.text)
 	global p_id
 	p_id = a['id']
+	details.p_id = p_id
+	details.url = 'https://www.youtube.com/playlist?list=' + p_id
+	details.save()
+	details.hostname = a['snippet']['channelTitle']
 	s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=shape+of+you&type=video&videoDefinition=high' , headers = headers )
 	songs  = json.loads(s.text)
 	v_id  = songs['items'][0]['id']['videoId']
@@ -89,9 +93,11 @@ def home(request):
 
 	w = requests.post('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' , headers = headers , data=json.dumps(data2))
 
+	name = {'name' : details.hostname}
+	responseobj = json.dumps(name, indent = 4)
 
 
-	return HttpResponse(q.text)
+	return HttpResponse(responseobj,content_type = "application/json")
 
 # https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=33704938095-g3uhslf1enbgg84hb40k0924mgea5arm.apps.googleusercontent.com&redirect_uri=https://djme.herokuapp.com/home&scope=https://www.googleapis.com/auth/youtube
 @csrf_exempt
