@@ -17,6 +17,15 @@ import json
 import requests
 import sys
 import base64
+
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+import json
+from api.models import user , hostsong , djsessions , finalplaylist 
+
 # import spotipy
 # import spotipy.util as util
 
@@ -83,3 +92,19 @@ def home(request):
 	return HttpResponse(w.text)
 
 # https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=33704938095-g3uhslf1enbgg84hb40k0924mgea5arm.apps.googleusercontent.com&redirect_uri=https://djme.herokuapp.com/home&scope=https://www.googleapis.com/auth/youtube
+
+# def songs_saver(request):
+# 	# Create your views here.
+# @csrf_exempt
+
+# 	try:
+# 		########################### EITHER YOU WILL HAVE YOUR POST REQUEST DATA IN REQUEST.BODY AND REQUEST.POST FROM WHERE YOU CAN PARSE it #######
+# 		x = json.loads(request.body)
+# 		print json.loads(request.body)
+# 		for i in x:
+			
+# 	except Exception as e:
+# 		print e
+# 		return HttpResponse("some error")
+# 	return HttpResponse("Post Succcessful")
+
