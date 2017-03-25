@@ -23,22 +23,22 @@ import base64
 # Create your views here.
 
 def home(request):
-	OAUTH_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize'
+	# OAUTH_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize'
 	
-	OAUTH_TOKEN_URL = 'https://accounts.spotify.com/api/token'
+	# OAUTH_TOKEN_URL = 'https://accounts.spotify.com/api/token'
 
-	client_id = 'f9b9538acdb94eb8ae5fe30216b60b44'
+	client_id = '33704938095-g3uhslf1enbgg84hb40k0924mgea5arm.apps.googleusercontent.com'
 
-	client_secret = '09cfe4fd21dd44c9b7fd7cdd672fd751'
+	client_secret = 'nOylsHNF81OOE5MwdUf2zhLv'
 
 	redirect_uri = 'https://djme.herokuapp.com/home'
 
 	code = request.GET.get('code')
 	print code 
-	payload = {'grant_type' : 'authorization_code' , 'code':code  ,'redirect_uri' : redirect_uri  }
-	headers = {"Authorization": 'Basic' +  base64.b64encode(bytes( 'f9b9538acdb94eb8ae5fe30216b60b44:09cfe4fd21dd44c9b7fd7cdd672fd751'))}
+	payload = {'grant_type' : 'authorization_code' , 'code':code  ,'redirect_uri' : redirect_uri  , 'client_id':client_id , 'client_secret' : client_secret  }
+	# headers = {"Authorization": 'Basic' +  base64.b64encode(bytes( 'f9b9538acdb94eb8ae5fe30216b60b44:09cfe4fd21dd44c9b7fd7cdd672fd751'))}
 
-	r = requests.post(OAUTH_TOKEN_URL , params = payload, headers = headers)
+	r = requests.post('https://www.googleapis.com/oauth2/v4/token' , params = payload)
 	print r
 
 
