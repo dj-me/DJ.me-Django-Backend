@@ -60,7 +60,7 @@ def home(request):
 	a  = json.loads(q.text)
 
 	p_id = a['id']
-	a = requests.get('https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list?part=snippet&order=viewCount&q=shape+of+you&type=video&videoDefinition=high' , headers = headers )
+	a = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=shape+of+you&type=video&videoDefinition=high' , headers = headers )
 
 
 	# data2 =   {
