@@ -51,7 +51,7 @@ def home(request):
      }
   }
 
-	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+	headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + z}
 	q = requests.post('https://www.googleapis.com/youtube/v3/playlists' , headers = headers , data=json.dumps(data))
 
 
