@@ -60,7 +60,8 @@ def home(request):
 	a  = json.loads(q.text)
 
 	p_id = a['id']
-	songs = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=shape+of+you&type=video&videoDefinition=high' , headers = headers )
+	s = requests.get('https://www.googleapis.com/youtube/v3/search?part=snippet&order=viewCount&q=shape+of+you&type=video&videoDefinition=high' , headers = headers )
+	songs  = json.loads(s.text)
 	v_id  = songs['items'][0]['id']['videoId']
 
 
