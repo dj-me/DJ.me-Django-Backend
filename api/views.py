@@ -50,9 +50,9 @@ def home(request):
       'description': 'Sample playlist for Data API',
      }
   }
-  
+
 	headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-	q = requests.post('https://www.googleapis.com/youtube/v3/playlists?part=snippet' , headers = headers , data=json.dumps(data))
+	q = requests.post('https://www.googleapis.com/youtube/v3/playlists' , headers = headers , data=json.dumps(data))
 
 
 	print q 
