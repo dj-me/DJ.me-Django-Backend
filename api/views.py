@@ -60,9 +60,24 @@ def home(request):
 	a  = json.loads(q.text)
 
 	p_id = a['id']
+	a = requests.get('https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list?part=snippet&order=viewCount&q=shape+of+you&type=video&videoDefinition=high' , headers = headers )
+
+
+	# data2 =   {
+ #    'snippet': {
+ #      'playlistId': p_id, 
+ #      'resourceId': {
+ #          'kind': 'youtube#video',
+ #          'videoId': '{VIDEO_ID}'
+ #        }
+ #     'position': 0
+ #      }
+ #   }
+
+	# w = requests.post('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet' , headers = headers , data=json.dumps(data2))
 
 
 
-	return HttpResponse(p_id)
+	return HttpResponse(a.text)
 
 # https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=33704938095-g3uhslf1enbgg84hb40k0924mgea5arm.apps.googleusercontent.com&redirect_uri=https://djme.herokuapp.com/home&scope=https://www.googleapis.com/auth/youtube
