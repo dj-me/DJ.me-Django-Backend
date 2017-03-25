@@ -147,6 +147,7 @@ def songs_saver(request):
 		aa = djsessions.objects.all().filter(hostedsession=x['hostedsession'])
 		songSorted = hostsong.objects.all().filter(hostedsession=aa).order_by('counter')
 		print "entering"
+		print songSorted
 		for l in songSorted:
 			z = l.song.replace(" ", "+")
 			headers = {'Content-type': 'application/json', 'Accept': 'text/plain' , "Authorization": "Bearer " + k.access_token}
