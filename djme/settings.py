@@ -60,9 +60,9 @@ WSGI_APPLICATION = 'djme.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'clash',
-        'USER': 'vishu',
-        'PASSWORD': 'Awesomegamer123',
+        'NAME': 'hacks',
+        'USER': 'vish',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '',
     }
