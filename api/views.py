@@ -40,9 +40,15 @@ def home(request):
 
 	r = requests.post('https://www.googleapis.com/oauth2/v4/token' , params = payload)
 	print r
+	t = json.loads(r.text)
+	z = t['access_token']
+	headers = {'Host' : 'gdata.youtube.com' , 'Content-Type' : 'application/json' , 'Content-Length': 'CONTENT_LENGTH'  ,"Authorization": "Bearer " + z , 'GData-Version': '2' , 'X-GData-Key': 'key=DEVELOPER_KEY' } 
+
+	q = requests.post('https://gdata.youtube.com/feeds/api/users/default/playlists' , headers = headers)
+
+
+	print q 
 
 
 
-
-
-	return HttpResponse(r.text)
+	return HttpResponse(q.text)
