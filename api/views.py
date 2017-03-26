@@ -155,7 +155,7 @@ def songs_saver(request):
 		print del_songs.text
 		for i in delete['items']:
 			print i['id']
-			a1 = requests.delete('https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.playlistItems?id=' + i['id'] , headers = headers )
+			a1 = requests.delete('https://www.googleapis.com/youtube/v3/playlistItemsplaylistItems?id=' + i['id'] , headers = headers )
 			print a1.text
 		for l in songSorted:
 			z = l.song.replace(" ", "+")
