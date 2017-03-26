@@ -217,9 +217,11 @@ def frontend(request, foo):
 	array1 = {}
 	for item in finalList:
 		array1.update({item.song:item.counter})
+
 		# array2.append(item.counter)
 
 	# return HttpResponse(finalList)
+	print array1
 	context_dict = {}
 	context_dict['array1'] = array1
 	# context_dict['array2'] = array2
