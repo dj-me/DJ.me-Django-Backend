@@ -214,7 +214,8 @@ def frontend(request, foo):
 	finalList = songSorted.reverse()
 	# print finalList
 	# return HttpResponse(finalList)
-	array1 = {}
+	array1 = []
+	array2 = []
 	for item in finalList:
 		array1.append(item.song)
 
