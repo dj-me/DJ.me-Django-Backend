@@ -140,12 +140,14 @@
 			<div class="program-item-head">
 				<ul>
 					<li>Program Name</li>
+					<li>Frequency</li>
 				</ul>
 			</div>
-			{% for item in array %}
+			{% for key,value in array1 %}
 			<div class="program-item item">
 				<ul>
-					<li>{{item}}</li>
+					<li>{{key}}</li>
+					<li>{{value}}</li>
 				</ul>
 			</div>
 			{% endfor %}

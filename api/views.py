@@ -214,11 +214,13 @@ def frontend(request, foo):
 	finalList = songSorted.reverse()
 	# print finalList
 	# return HttpResponse(finalList)
-	array = []
-	for item in finalList:
-		array.append(item.song)
+	array1 = {}
+	for key,value in finalList:
+		array1.update(item.song:item.counter)
+		# array2.append(item.counter)
 
 	# return HttpResponse(finalList)
 	context_dict = {}
-	context_dict['array'] = array
+	context_dict['array1'] = array1
+	# context_dict['array2'] = array2
 	return render(request,'api/nava-radio-home.html',context_dict)
