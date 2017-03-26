@@ -215,8 +215,8 @@ def frontend(request, foo):
 	# print finalList
 	# return HttpResponse(finalList)
 	array1 = {}
-	for key,value in finalList:
-		array1.update(item.song:item.counter)
+	for item in finalList:
+		array1.update({item.song:item.counter})
 		# array2.append(item.counter)
 
 	# return HttpResponse(finalList)
