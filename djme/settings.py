@@ -54,6 +54,21 @@ ROOT_URLCONF = 'djme.urls'
 WSGI_APPLICATION = 'djme.wsgi.application'
 
 
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+
+TEMPLATE_DIRS = (
+    TEMPLATE_PATH,
+)
+
+
+STATIC_ROOT = 'staticfiles'
+STATIC_PATH = os.path.join(BASE_DIR,'api/static')
+
+STATIC_URL = '/static/' 
+
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -90,3 +105,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

@@ -18,6 +18,8 @@ import requests
 import sys
 import base64
 
+from django.db.models import Count
+
 
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -202,3 +204,21 @@ def song(request):
 	data2  = {'hostname': 'Vishrut Kohli' , 'hostedsession' : 'vishrut1' , 'songs'  : [ 'shape of you' , 'down' , 'one time']}
 	w = requests.post('https://djme.herokuapp.com/song_saver' ,  data=json.dumps(data2))
 	return HttpResponse("w.text")
+
+
+
+
+def frontend(request, foo):
+	aa = djsessions.objects.all().filter(hostedsession=foo)
+	songSorted = hostsong.objects.all().filter(hostedsession=aa).order_by('counter')
+	finalList = songSorted.reverse()
+	# print finalList
+	# return HttpResponse(finalList)
+	array = []
+	for item in finalList:
+		array.append(item.song)
+
+	# return HttpResponse(finalList)
+	context_dict = {}
+	context_dict['array'] = array
+	return render(request,'main/nava-radio-home.html',context_dict)

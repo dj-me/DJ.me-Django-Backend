@@ -7,3 +7,5 @@ mysqlclient
 dj-database-url
 psycopg2==2.6.1
 soundcloud
+
+whitenoise
