@@ -126,7 +126,7 @@
 </header>
 
 <center>
-	<iframe width="420" height="345" src="https://www.youtube.com/embed/playlist?list=PLQfv_9TJOAG2FAEoJdhMz7BGOXpBgsqlI" frameborder="0" allowfullscreen></iframe>
+	<iframe width="420" height="345" src="http://www.youtube.com/embed/playlist?list=PLQfv_9TJOAG2FAEoJdhMz7BGOXpBgsqlI" frameborder="0" allowfullscreen></iframe>
 </center>
 
 
@@ -140,14 +140,13 @@
 			<div class="program-item-head">
 				<ul>
 					<li>Program Name</li>
-					<li>Frequency</li>
 				</ul>
 			</div>
-			{% for key,value in array1_item.items() %}
+			{% for i in range(1,10) %}
 			<div class="program-item item">
 				<ul>
-					<li>{{key}}</li>
-					<li>{{value}}</li>
+					<li>{{ array1[i] }}</li>
+					<li>{{ array2[i] }}</li>
 				</ul>
 			</div>
 			{% endfor %}
