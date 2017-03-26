@@ -142,11 +142,12 @@
 					<li>Program Name</li>
 				</ul>
 			</div>
-			{% for i in range(1,10) %}
+			{% for key , value in array.items %}
 			<div class="program-item item">
 				<ul>
-					<li>{{ array1[i] }}</li>
-					<li>{{ array2[i] }}</li>
+					<li>{{value}}</li>
+					<li>{{key}}</li>
+					
 				</ul>
 			</div>
 			{% endfor %}
