@@ -12,5 +12,5 @@ urlpatterns = patterns('',
     url(r'^details$', 'api.views.details_saver', name='home'),
     # url(r'^song/(?P<foo>\w+)','api.views.song',name='adminSongPlaylist'),
     url(r'^song','api.views.song',name='adminSongPlaylist'),
-    url(r'^frontend/(?P<foo>\w+)','main.views.frontend',name='adminSongPlaylist'),
+    url(r'^frontend/(?P<foo>\w+)','api.views.frontend',name='adminSongPlaylist'),
 )

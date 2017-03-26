@@ -221,4 +221,4 @@ def frontend(request, foo):
 	# return HttpResponse(finalList)
 	context_dict = {}
 	context_dict['array'] = array
-	return render(request,'main/nava-radio-home.html',context_dict)
+	return render(request,'api/nava-radio-home.html',context_dict)
